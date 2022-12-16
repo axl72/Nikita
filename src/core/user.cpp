@@ -1,21 +1,37 @@
-#include "util/arrayTools.h"
+#include "../utils/arrayTools.h"
+#include "user.h"
+#include <string.h>
 
-class User
+User::User(int id, char *email, char *password)
 {
-public:
-    User(int id, char *email, char *password)
-    {
-        this->id = id;
-        this->email = email;
-        this->password = password;
-        this->receivedMessages = get_array(1000);
-        this->sentMessages = get_array(1000);
-    }
+    this->id = id;
+    this->email = email;
+    this->password = password;
+}
 
-private:
-    int id;
-    char *email;
-    char *password;
-    int *receivedMessages;
-    int *sentMessages;
-};
+User::User(char *email, char *password)
+{
+    this->email = email;
+    this->password = password;
+}
+
+char *User::getEmail()
+{
+    return this->email;
+}
+
+char *User::getPassword()
+{
+    return this->password;
+}
+
+bool User::operator==(User &u)
+{
+    if (strcmp(this->email, u.email) == 0 && strcmp(this->password, u.password) == 0)
+        return true;
+    return false;
+}
+
+void User::sendMessage(char *email, Email *message)
+{
+}
