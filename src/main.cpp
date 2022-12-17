@@ -3,11 +3,9 @@
 #include "core/user.h"
 #include "utils/input.h"
 #include <string.h>
+#include "core/records.h"
 
 using namespace std;
-
-User *usuario_conectado = NULL;
-vector<User> *lista_usuarios = new vector<User>();
 
 int user_menu(User *usuario_conectado)
 {
@@ -44,8 +42,9 @@ bool register_menu(vector<User> *lista_usuarios)
 
         if (strcmp(password, check_password) == 0)
         {
-            User *nuevo_usuario = new User(10, email, password);
+            User *nuevo_usuario = new User(lista_usuarios->size() + 1, email, password);
             lista_usuarios->push_back(*nuevo_usuario);
+            gurdar_lista_usuarios();
             cout << "Usuario registrado exitosamente" << endl;
             system("pause");
             return true;

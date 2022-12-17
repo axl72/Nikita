@@ -1,7 +1,9 @@
 #ifndef USUARIOS
 #define USUARIOS
 #include "email.h"
+#include <vector>
 
+using namespace std;
 class User
 {
 
@@ -12,13 +14,16 @@ public:
     bool operator==(User &u1);
     char *getEmail();
     char *getPassword();
+    void addMessageToReceived(Email *email);
+    void addMessageToSent(Email *email);
+    Email *readMessages();
 
 private:
     int id;
     char *email;
     char *password;
-    int *receivedMessages;
-    int *sentMessages;
+    vector<int> receivedMessages;
+    vector<int> sentMessages;
 };
 
 #endif

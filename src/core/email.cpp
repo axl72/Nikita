@@ -6,3 +6,8 @@ Email::Email(int id, char *body, char *header)
     this->body = body;
     this->header = header;
 }
+
+int Email::getId()
+{
+    return this->id;
+}
